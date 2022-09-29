@@ -1,24 +1,15 @@
 {
   "name": "merchant-services",
+  "description": "Mini Project Express JS & MySQL",
   "version": "1.0.0",
-  "description": "Mini Project Express JS & MySQL API",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/raihanromzi/merchant-services.git"
-  },
-  "keywords": [
-    "api",
-    "node",
-    "js"
-  ],
-  "author": "Raihan Romzi R",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/raihanromzi/merchant-services/issues"
-  },
-  "homepage": "https://github.com/raihanromzi/merchant-services#readme"
+  "dependencies": {
+    "cookie-parser": "~1.x.x",
+    "debug": "~2.x.x",
+    "express": "~4.x.x",
+    "morgan": "~1.x.x"
+  }
 }
