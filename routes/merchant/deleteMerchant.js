@@ -1,11 +1,9 @@
 const express = require('express')
-const db = require('../config/db')
-const response = require('../utils/response')
-const { nanoid } = require('nanoid')
-
+const db = require('../../config/db')
+const response = require('../../utils/response')
 const router = express.Router()
 
-router.get('/merchant/:merchantId', async (req, res) => {
+router.delete('/merchant/:merchantId', async (req, res) => {
   try {
     const { merchantId } = req.params
 
@@ -15,18 +13,26 @@ router.get('/merchant/:merchantId', async (req, res) => {
       return
     }
 
+    // Check if Merchant is Found
     try {
-      const sqlQuery = `SELECT Product_ID, Name, Quantity, Price FROM Product WHERE Merchant_ID='${merchantId}'`
-      const results = await db.promise().query(sqlQuery)
+      const sqlQuery = `SELECT * FROM Merchant WHERE Merchant_ID='${merchantId}'`
+      const result = await db.promise().query(sqlQuery)
 
-      if (results[0].length === 0) {
+      if (result[0].length === 0) {
         res.status(404).send(response.responseError('404 Not Found', 'Merchant ID Not Correct'))
         return
       }
 
-      res.status(200).send(response.responseSuccess('200 OK', 'Success Get Product', results[0]))
+    } catch (e) {
+      res.status(500).send(response.responseError('500 Server Error', 'Server Error Please Wait'))
       return
+    }
 
+    try {
+      const sqlQuery = `DELETE FROM Merchant WHERE Merchant_ID='${merchantId}'`
+      db.query(sqlQuery)
+      res.status(200).send(response.responseSuccess('200 OK', 'Success Delete Merchant'))
+      return
     } catch (e) {
       res.status(500).send(response.responseError('500 Server Error', 'Server Error Please Wait'))
       return

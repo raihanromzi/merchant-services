@@ -1,6 +1,6 @@
 const express = require('express')
-const db = require('../config/db')
-const response = require('../utils/response')
+const db = require('../../config/db')
+const response = require('../../utils/response')
 const { nanoid } = require('nanoid')
 
 const router = express.Router()

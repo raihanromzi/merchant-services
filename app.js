@@ -3,12 +3,12 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 
-const addMerchant = require('./routes/addMerchant')
-const deleteMerchant = require('./routes/deleteMerchant')
-const addProduct = require('./routes/addProduct')
-const getAllProduct = require('./routes/getAllProduct')
-const updateProduct = require('./routes/updateProduct')
-const deleteProduct = require('./routes/deleteProduct')
+const addMerchant = require('./routes/merchant/addMerchant')
+const deleteMerchant = require('./routes/merchant/deleteMerchant')
+const addProduct = require('./routes/product/addProduct')
+const getAllProduct = require('./routes/product/getAllProduct')
+const updateProduct = require('./routes/product/updateProduct')
+const deleteProduct = require('./routes/product/deleteProduct')
 
 const app = express()
 
