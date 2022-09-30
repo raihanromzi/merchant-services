@@ -3,8 +3,13 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const productsRouter = require('./routes/product')
+
 const addMerchant = require('./routes/addMerchant')
 const deleteMerchant = require('./routes/deleteMerchant')
+const addProduct = require('./routes/addProduct')
+const getAllProduct = require('./routes/getAllProduct')
+const updateProduct = require('./routes/updateProduct')
+const deleteProduct = require('./routes/deleteProduct')
 
 const app = express()
 
@@ -15,8 +20,11 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/api', addMerchant)
-app.use('/api', deleteMerchant)
-app.use('/api', productsRouter)
 
+app.use('/api', deleteMerchant)
+app.use('/api', addProduct)
+app.use('/api', getAllProduct)
+app.use('/api', updateProduct)
+app.use('/api', deleteProduct)
 
 module.exports = app
