@@ -47,7 +47,7 @@ router.put('/merchant/:merchantId/:productId', async (req, res) => {
 
       const sqlQueryGet = `SELECT Product_ID, Name, Quantity, Price FROM Product WHERE Merchant_ID='${merchantId}' AND Merchant_ID='${merchantId}'`
       const results = await db.promise().query(sqlQueryGet)
-      res.status(200).send(response.responseSuccess('200 OK', 'Success Get Product', results[0]))
+      res.status(200).send(response.responseSuccess('200 OK', 'Success Update Product', results[0]))
       return
 
     } catch (e) {
