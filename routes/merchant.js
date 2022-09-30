@@ -10,7 +10,7 @@ router.post('/merchant', (req, res) => {
     const { password, name, address, phone_number } = req.body
     const id = nanoid(16)
 
-    // If Empty
+    // Validation
     if (!password || !name || !address || !phone_number) {
       res.status(400).send(response.responseError('400 Bad Request', 'Request Body Not Correct'))
       return
@@ -63,6 +63,34 @@ router.delete('/merchant/:merchantId', (req, res) => {
       return
     }
 
+  } catch (e) {
+    res.status(500).send(response.responseError('500 Server Error', 'Server Error Please Wait'))
+    return
+  }
+})
+
+router.put('/merchant/:merchantId/:productId', (req, res) => {
+  try {
+    const { merchantId, productId } = req.params
+    const { name, quantity, price } = req.body
+
+    // Validation
+    if (typeof (name) !== 'string' || typeof (quantity) !== 'number' || typeof (price) !== 'number') {
+      res.status(400).send(response.responseError('400 Bad Request', 'Request Body Not Correct'))
+      return
+    }
+
+    if (merchantId.length !== 16 || Number.isInteger(merchantId)) {
+      res.status(404).send(response.responseError('404 Not Found', 'Merchant ID Not Correct'))
+      return
+    }
+
+    if (productId.length !== 16 || Number.isInteger(merchantId)) {
+      res.status(404).send(response.responseError('404 Not Found', 'Product ID Not Correct'))
+      return
+    }
+
+    
   } catch (e) {
     res.status(500).send(response.responseError('500 Server Error', 'Server Error Please Wait'))
     return
