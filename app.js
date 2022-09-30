@@ -3,6 +3,7 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const merchantsRouter = require('./routes/merchant')
+const productsRouter = require('./routes/product')
 
 const app = express()
 
@@ -13,5 +14,7 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/api', merchantsRouter)
+app.use('/api', productsRouter)
+
 
 module.exports = app

@@ -14,7 +14,9 @@ router.post('/merchant', (req, res) => {
     if (!password || !name || !address || !phone_number) {
       res.status(400).send(response.responseError('400 Bad Request', 'Request Body Not Correct'))
       return
-    } else if (typeof (password) !== 'string' || typeof (name) !== 'string' || typeof (address) !== 'string' || typeof (phone_number) !== 'string') {
+    }
+
+    if (typeof (password) !== 'string' || typeof (name) !== 'string' || typeof (address) !== 'string' || typeof (phone_number) !== 'string') {
       res.status(400).send(response.responseError('400 Bad Request', 'Request Body Not Correct'))
       return
     }
@@ -66,6 +68,5 @@ router.delete('/merchant/:merchantId', (req, res) => {
     return
   }
 })
-
 
 module.exports = router

@@ -1,9 +1,9 @@
 const cleanObj = require('./cleanObj')
 
 const responseSuccess = (status, message, data) => cleanObj({
-  status,
-  message,
-  data
+  'Status': status,
+  'Message': message,
+  'Data': data
 })
 
 const responseError = (status, message) => cleanObj({
