@@ -168,7 +168,7 @@ router.delete('/merchant/:merchantId/:productId', async (req, res) => {
     try {
       const sqlQuery = `DELETE FROM Product WHERE Merchant_ID='${merchantId}' AND Merchant_ID='${merchantId}'`
       db.query(sqlQuery)
-      res.status(200).send(response.responseSuccess('200 OK', 'Success Delete Merchant'))
+      res.status(200).send(response.responseSuccess('200 OK', 'Success Delete Product'))
       return
 
     } catch (e) {
