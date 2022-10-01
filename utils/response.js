@@ -1,4 +1,4 @@
-const cleanObj = require('./cleanObj')
+const cleanObj = require('./clean_obj')
 
 const responseSuccess = (code, status, data) => cleanObj({
   'code': code,
