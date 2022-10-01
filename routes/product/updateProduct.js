@@ -11,7 +11,7 @@ router.put('/merchant/:merchantId/:productId', async (req, res) => {
     const { name, quantity, price } = req.body
 
     // Validation
-    if (typeof (name) !== 'string' || typeof (quantity) !== 'number' || typeof (price) !== 'number') {
+    if (typeof (name) !== 'string' || typeof (quantity) !== 'number' || typeof (price) !== 'number' || name.length < 3 || name.length > 50 || quantity < 1 || price < 10000) {
       res.status(400).send(response.responseError('400 Bad Request', 'Request Body Not Correct'))
       return
     }

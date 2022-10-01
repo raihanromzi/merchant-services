@@ -11,7 +11,7 @@ router.post('/merchant', (req, res) => {
     const id = nanoid(16)
 
     // Validation
-    if (!password || !name || !address || !phone_number) {
+    if (!password || !name || !address || !phone_number || password.length < 6 || name.length < 3 || name.length > 50) {
       res.status(400).send(response.responseError('400 Bad Request', 'Request Body Not Correct'))
       return
     }

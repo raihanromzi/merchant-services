@@ -17,7 +17,7 @@ router.post('/merchant/:merchantId', (req, res) => {
       return
     }
 
-    if (!name || !quantity || !price) {
+    if (!name || !quantity || !price || name.length < 3 || name.length > 50 || quantity < 1 || price < 10000) {
       res.status(400).send(response.responseError('400 Bad Request', 'Request Body Not Correct'))
       return
     }
