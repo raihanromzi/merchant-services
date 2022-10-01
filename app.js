@@ -9,6 +9,7 @@ const addProduct = require('./routes/product/addProduct')
 const getAllProduct = require('./routes/product/getAllProduct')
 const updateProduct = require('./routes/product/updateProduct')
 const deleteProduct = require('./routes/product/deleteProduct')
+const login = require('./routes/auth/login')
 
 const app = express()
 
@@ -19,11 +20,11 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/api', addMerchant)
-
 app.use('/api', deleteMerchant)
 app.use('/api', addProduct)
 app.use('/api', getAllProduct)
 app.use('/api', updateProduct)
 app.use('/api', deleteProduct)
+app.use('/api', login)
 
 module.exports = app
