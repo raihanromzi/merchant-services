@@ -1,14 +1,17 @@
 const cleanObj = require('./cleanObj')
 
-const responseSuccess = (status, message, data) => cleanObj({
+const responseSuccess = (code, status, data) => cleanObj({
+  'code': code,
   'status': status,
-  'message': message,
-  'data': data
+  'data': [
+    data
+  ]
 })
 
-const responseError = (status, message) => cleanObj({
+const responseError = (code, status, error) => cleanObj({
+  'code': code,
   'status': status,
-  'message': message,
+  'errors': error,
 })
 
 module.exports = { responseSuccess, responseError }

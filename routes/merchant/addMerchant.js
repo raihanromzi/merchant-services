@@ -10,7 +10,6 @@ router.post('/merchant', (req, res) => {
     const { password, name, address, phone_number } = req.body
     const id = nanoid(16)
 
-    // Validation
     if (
       !password
       || !name
@@ -20,7 +19,7 @@ router.post('/merchant', (req, res) => {
       || name.length < 3
       || name.length > 50
     ) {
-      res.status(400).send(response.responseError('400 Bad Request', 'Request Body Not Correct'))
+      res.status(400).send(response.responseError('400 ', 'BAD_REQUEST', 'Request Body Not Correct'))
       return
     }
 
@@ -30,29 +29,22 @@ router.post('/merchant', (req, res) => {
       || typeof (address) !== 'string'
       || typeof (phone_number) !== 'string'
     ) {
-      res.status(400).send(response.responseError('400 Bad Request', 'Request Body Not Correct'))
+      res.status(400).send(response.responseError('400 ', 'BAD_REQUEST', 'Request Body Not Correct'))
       return
     }
 
-    try {
-      const sqlQuery = `INSERT INTO Merchant (Merchant_ID, Password, Name, Address, Phone_number) VALUES ('${id}', '${password}', '${name}', '${address}', '${phone_number}');`
-      db.query(sqlQuery)
-      res.status(201).send(response.responseSuccess('201 Created', '', {
-        'id': id,
-        'password': password,
-        'name': name,
-        'address': address,
-        'phone_number': phone_number
-      }))
-      return
-    } catch (e) {
-      res.status(500).send(response.responseError('500 Server Error', 'Server Error Please Wait'))
-      return
-    }
+    const sqlQuery = `INSERT INTO Merchant (Merchant_ID, Password, Name, Address, Phone_number) VALUES ('${id}', '${password}', '${name}', '${address}', '${phone_number}');`
+    db.query(sqlQuery)
+    res.status(201).send(response.responseSuccess('201', 'CREATED', {
+      'id': id,
+      'password': password,
+      'name': name,
+      'address': address,
+      'phone_number': phone_number
+    }))
 
   } catch (e) {
-    res.status(500).send(response.responseError('500 Server Error', 'Server Error Please Wait'))
-    return
+    res.status(500).send(response.responseError('500', 'SERVER_ERROR', 'Server Error Please Wait'))
   }
 })
 

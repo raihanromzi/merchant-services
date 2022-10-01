@@ -6,17 +6,17 @@ const { nanoid } = require('nanoid')
 const router = express.Router()
 
 router.post('/merchant/:merchantId', (req, res) => {
+  
   try {
     const { merchantId } = req.params
     const { name, quantity, price } = req.body
     const productId = nanoid(16)
 
-    //Validation
     if (
       merchantId.length !== 16
       || Number.isInteger(merchantId)
     ) {
-      res.status(404).send(response.responseError('404 Not Found', 'Merchant ID Not Found'))
+      res.status(404).send(response.responseError('404', ' NOT_FOUND', 'Merchant ID Not Found'))
       return
     }
 
@@ -29,7 +29,7 @@ router.post('/merchant/:merchantId', (req, res) => {
       || quantity < 1
       || price < 10000
     ) {
-      res.status(400).send(response.responseError('400 Bad Request', 'Request Body Not Correct'))
+      res.status(400).send(response.responseError('400 ', 'BAD_REQUEST', 'Request Body Not Correct'))
       return
     }
 
@@ -38,27 +38,20 @@ router.post('/merchant/:merchantId', (req, res) => {
       || typeof (quantity) !== 'number'
       || typeof (price) !== 'number'
     ) {
-      res.status(400).send(response.responseError('400 Bad Request', 'Request Body Not Correct'))
+      res.status(400).send(response.responseError('400 ', 'BAD_REQUEST', 'Request Body Not Correct'))
       return
     }
 
-    try {
-      const sqlQuery = `INSERT INTO Product (Product_ID, Merchant_ID ,Name, Quantity, Price) VALUES ('${productId}', '${merchantId}', '${name}', '${quantity}', '${price}');`
-      db.query(sqlQuery)
-      res.status(201).send(response.responseSuccess('201 Created', '', {
-        'name': name,
-        'quantity': quantity,
-        'price': price
-      }))
-      return
-    } catch (e) {
-      res.status(500).send(response.responseError('500 Server Error', 'Server Error Please Wait'))
-      return
-    }
+    const sqlQuery = `INSERT INTO Product (Product_ID, Merchant_ID ,Name, Quantity, Price) VALUES ('${productId}', '${merchantId}', '${name}', '${quantity}', '${price}');`
+    db.query(sqlQuery)
+    res.status(201).send(response.responseSuccess('201', 'CREATED', {
+      'name': name,
+      'quantity': quantity,
+      'price': price
+    }))
 
   } catch (e) {
-    res.status(500).send(response.responseError('500 Server Error', 'Server Error Please Wait'))
-    return
+    res.status(500).send(response.responseError('500', 'SERVER_ERROR', 'Server Error Please Wait'))
   }
 })
 
