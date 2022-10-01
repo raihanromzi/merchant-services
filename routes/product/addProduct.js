@@ -12,17 +12,32 @@ router.post('/merchant/:merchantId', (req, res) => {
     const productId = nanoid(16)
 
     //Validation
-    if (merchantId.length !== 16 || Number.isInteger(merchantId)) {
+    if (
+      merchantId.length !== 16
+      || Number.isInteger(merchantId)
+    ) {
       res.status(404).send(response.responseError('404 Not Found', 'Merchant ID Not Found'))
       return
     }
 
-    if (!name || !quantity || !price || name.length < 3 || name.length > 50 || quantity < 1 || price < 10000) {
+    if (
+      !name
+      || !quantity
+      || !price
+      || name.length < 3
+      || name.length > 50
+      || quantity < 1
+      || price < 10000
+    ) {
       res.status(400).send(response.responseError('400 Bad Request', 'Request Body Not Correct'))
       return
     }
 
-    if (typeof (name) !== 'string' || typeof (quantity) !== 'number' || typeof (price) !== 'number') {
+    if (
+      typeof (name) !== 'string'
+      || typeof (quantity) !== 'number'
+      || typeof (price) !== 'number'
+    ) {
       res.status(400).send(response.responseError('400 Bad Request', 'Request Body Not Correct'))
       return
     }

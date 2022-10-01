@@ -10,7 +10,10 @@ router.get('/merchant/:merchantId', async (req, res) => {
     const { merchantId } = req.params
 
     //Validation
-    if (merchantId.length !== 16 || Number.isInteger(merchantId)) {
+    if (
+      merchantId.length !== 16
+      || Number.isInteger(merchantId)
+    ) {
       res.status(404).send(response.responseError('404 Not Found', 'Merchant ID Not Found'))
       return
     }
@@ -25,16 +28,16 @@ router.get('/merchant/:merchantId', async (req, res) => {
       }
 
       res.status(200).send(response.responseSuccess('200 OK', 'Success Get Product', results[0]))
-      return
+
 
     } catch (e) {
       res.status(500).send(response.responseError('500 Server Error', 'Server Error Please Wait'))
-      return
+
     }
 
   } catch (e) {
     res.status(500).send(response.responseError('500 Server Error', 'Server Error Please Wait'))
-    return
+
   }
 })
 

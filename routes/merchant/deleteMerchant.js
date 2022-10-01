@@ -8,7 +8,10 @@ router.delete('/merchant/:merchantId', async (req, res) => {
     const { merchantId } = req.params
 
     //Validation
-    if (merchantId.length !== 16 || Number.isInteger(merchantId)) {
+    if (
+      merchantId.length !== 16
+      || Number.isInteger(merchantId)
+    ) {
       res.status(404).send(response.responseError('404 Not Found', 'Merchant ID Not Found'))
       return
     }
