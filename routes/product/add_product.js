@@ -6,7 +6,7 @@ const { nanoid } = require('nanoid')
 const router = express.Router()
 
 router.post('/merchant/:merchantId', (req, res) => {
-  
+
   try {
     const { merchantId } = req.params
     const { name, quantity, price } = req.body
@@ -49,7 +49,6 @@ router.post('/merchant/:merchantId', (req, res) => {
       'quantity': quantity,
       'price': price
     }))
-
   } catch (e) {
     res.status(500).send(response.responseError('500', 'SERVER_ERROR', 'Server Error Please Wait'))
   }

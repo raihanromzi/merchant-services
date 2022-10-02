@@ -21,7 +21,7 @@ router.get('/merchant/:merchantId', async (req, res) => {
     const results = await db.promise().query(sqlQuery)
 
     if (results[0].length === 0) {
-      res.status(404).send(response.responseError('404', ' NOT_FOUND', 'Merchant ID Not Found'))
+      res.status(404).send(response.responseError('404', ' NOT_FOUND', 'Product Not Found'))
       return
     }
 

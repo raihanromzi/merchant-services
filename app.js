@@ -27,9 +27,8 @@ app.use(authToken)
 app.use('/api', addMerchant)
 app.use('/api', deleteMerchant)
 app.use('/api', addProduct)
+app.use('/api', deleteProduct)
 app.use('/api', getAllProduct)
 app.use('/api', updateProduct)
-app.use('/api', deleteProduct)
-
 
 module.exports = app
