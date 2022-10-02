@@ -36,8 +36,8 @@ router.put('/merchant/:merchantId/:productId', async (req, res) => {
     }
 
     if (
-      merchantId.length !== 16
-      || Number.isInteger(merchantId)
+      Number.isInteger(merchantId)
+      || merchantId.length !== 16
     ) {
       res
         .status(404)
