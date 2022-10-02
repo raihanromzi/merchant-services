@@ -11,7 +11,7 @@ const getAllProduct = require('./routes/product/get_all_product')
 const updateProduct = require('./routes/product/update_product')
 const deleteProduct = require('./routes/product/delete_product')
 const login = require('./routes/auth/login')
-const authToken = require('./middleware/jwt_auth')
+const jwtAuth = require('./middleware/jwt_auth')
 
 const app = express()
 
@@ -20,9 +20,11 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
+
 // app.use(basicAuth)
+
 app.use('/', login)
-app.use(authToken)
+app.use(jwtAuth)
 
 app.use('/api', addMerchant)
 app.use('/api', deleteMerchant)

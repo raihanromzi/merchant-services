@@ -12,6 +12,7 @@ app.use((req, res, next) => {
     res
       .status(401)
       .send(response.responseError(401, 'UNAUTHORIZED', 'Access Denied'))
+    return
   }
 
   // Verify JWT
@@ -20,6 +21,7 @@ app.use((req, res, next) => {
       res
         .status(403)
         .send(response.responseError(403, 'FORBIDDEN', 'Access Denied'))
+      return
     }
     next()
   })
