@@ -23,10 +23,10 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // app.use(basicAuth)
 
+app.use('/api', addMerchant)
 app.use('/', login)
 app.use(jwtAuth)
 
-app.use('/api', addMerchant)
 app.use('/api', deleteMerchant)
 app.use('/api', addProduct)
 app.use('/api', deleteProduct)

@@ -21,9 +21,10 @@ app.use((req, res, next) => {
       res
         .status(403)
         .send(response.responseError(403, 'FORBIDDEN', 'Access Denied'))
-      return
+
+    } else {
+      next()
     }
-    next()
   })
 })
 
