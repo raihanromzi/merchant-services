@@ -55,7 +55,7 @@ router.delete('/merchant/:merchantId/:productId', async (req, res) => {
       `DELETE 
        FROM Product 
        WHERE Merchant_ID='${merchantId}' 
-       AND Merchant_ID='${merchantId}'`
+       AND Product_ID='${productId}'`
 
     db.query(sqlQuery, (err) => {
 
