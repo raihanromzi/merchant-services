@@ -1,0 +1,286 @@
+{
+	"info": {
+		"_postman_id": "2b0e9f1f-2003-475c-af57-4ba79f84bc1a",
+		"name": "Merchant Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18240795"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"04VgL3CRxOpco2ii\",\n    \"password\": \"1234567890\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:{{Port}}/login",
+					"host": [
+						"localhost"
+					],
+					"port": "{{Port}}",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Merchant",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"password\": \"1234567890\",\n    \"name\": \"Raihan\",\n    \"address\": \"Bandung\",\n    \"phone_number\": \"1234567890\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:{{Port}}/api/merchant",
+					"host": [
+						"localhost"
+					],
+					"port": "{{Port}}",
+					"path": [
+						"api",
+						"merchant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Product to Merchant",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA0VmdMM0NSeE9wY28yaWkiLCJwYXNzd29yZCI6IjEyMzQ1Njc4OTAiLCJpYXQiOjE2NjQ3NTYxMTh9.mrW-A5AJEFFumtDcKyz4Jmof1-GrOKKsNuP3OUHUKno",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Apple\",\n    \"quantity\": 100,\n    \"price\": 30000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:{{Port}}/api/merchant/{{Merchant_ID}}",
+					"host": [
+						"localhost"
+					],
+					"port": "{{Port}}",
+					"path": [
+						"api",
+						"merchant",
+						"{{Merchant_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Product Merchant",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA0VmdMM0NSeE9wY28yaWkiLCJwYXNzd29yZCI6IjEyMzQ1Njc4OTAiLCJpYXQiOjE2NjQ3NTYxMTh9.mrW-A5AJEFFumtDcKyz4Jmof1-GrOKKsNuP3OUHUKno",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:{{Port}}/api/merchant/{{Merchant_ID}}",
+					"host": [
+						"localhost"
+					],
+					"port": "{{Port}}",
+					"path": [
+						"api",
+						"merchant",
+						"{{Merchant_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product in Merchant",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA0VmdMM0NSeE9wY28yaWkiLCJwYXNzd29yZCI6IjEyMzQ1Njc4OTAiLCJpYXQiOjE2NjQ3NTYxMTh9.mrW-A5AJEFFumtDcKyz4Jmof1-GrOKKsNuP3OUHUKno",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Samsung\",\n  \"quantity\": 10,\n  \"price\": 30000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:{{Port}}/api/merchant/{{Merchant_ID}}/{{Product_ID}}",
+					"host": [
+						"localhost"
+					],
+					"port": "{{Port}}",
+					"path": [
+						"api",
+						"merchant",
+						"{{Merchant_ID}}",
+						"{{Product_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product in Merchant",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA0VmdMM0NSeE9wY28yaWkiLCJwYXNzd29yZCI6IjEyMzQ1Njc4OTAiLCJpYXQiOjE2NjQ3NTYxMTh9.mrW-A5AJEFFumtDcKyz4Jmof1-GrOKKsNuP3OUHUKno",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:{{Port}}/api/merchant/{{Merchant_ID}}/{{Product_ID}}",
+					"host": [
+						"localhost"
+					],
+					"port": "{{Port}}",
+					"path": [
+						"api",
+						"merchant",
+						"{{Merchant_ID}}",
+						"{{Product_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Merchant",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA0VmdMM0NSeE9wY28yaWkiLCJwYXNzd29yZCI6IjEyMzQ1Njc4OTAiLCJpYXQiOjE2NjQ3NTYxMTh9.mrW-A5AJEFFumtDcKyz4Jmof1-GrOKKsNuP3OUHUKno",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:{{Port}}/api/merchant/{{Merchant_ID}}",
+					"host": [
+						"localhost"
+					],
+					"port": "{{Port}}",
+					"path": [
+						"api",
+						"merchant",
+						"{{Merchant_ID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Port",
+			"value": "8080",
+			"type": "string"
+		},
+		{
+			"key": "Merchant_ID",
+			"value": "04VgL3CRxOpco2ii"
+		},
+		{
+			"key": "Product_ID",
+			"value": "1"
+		}
+	]
+}
